@@ -1,6 +1,24 @@
+/*
+  Swift Learning Journey
+  
+  This Swift program helped me to start 
+  programming the swift programming language. Each
+  chapter introduces key concepts in Swift programming.
+  
+  Author: [Jonas Vanhulst]
+  Date: [10/02/2024]
+
+  Feel free to explore and enjoy my Swift learning journey!
+*/
+
 import UIKit
 
-// Write a Swift program to compute the sum of the two integers. If the values are equal return the triple their sum.
+/*
+ Swift Learning Journey
+ Chapter 1 : Basics
+*/
+
+// 1. Write a Swift program to compute the sum of the two integers. If the values are equal return the triple their sum.
 func summing(firts_digit : Int , second_digit : Int ) -> Int {
     if firts_digit == second_digit {
         return (firts_digit + second_digit) * 3
@@ -9,7 +27,7 @@ func summing(firts_digit : Int , second_digit : Int ) -> Int {
     }
 }
 
-// Write a Swift program to compute and return the absolute difference of n and 51, if n is over 51 return double the absolute difference.
+// 2. Write a Swift program to compute and return the absolute difference of n and 51, if n is over 51 return double the absolute difference.
 func compute(digit : Int) -> Int {
     if digit > 51 {
         return (digit - 51) * 2
@@ -18,7 +36,7 @@ func compute(digit : Int) -> Int {
     }
 }
 
-// Write a Swift program that accept two integer values and return true if one of them is 20 or if their sum is 20.
+// 3. Write a Swift program that accept two integer values and return true if one of them is 20 or if their sum is 20.
 func accept(first_digit : Int , second_digit : Int) -> Bool {
     if first_digit == 20 || second_digit == 20 || (first_digit + second_digit) == 20 {
         return true
@@ -27,7 +45,7 @@ func accept(first_digit : Int , second_digit : Int) -> Bool {
     }
 }
 
-// Write a Swift program to accept two integer values and return true if one is negative and one is positive. Return true only if both are negative.
+// 4. Write a Swift program to accept two integer values and return true if one is negative and one is positive. Return true only if both are negative.
 func digit_check(first_digit : Int , second_digit : Int) -> Bool {
     if first_digit < 0 && second_digit < 0 {
         return true
@@ -40,7 +58,7 @@ func digit_check(first_digit : Int , second_digit : Int) -> Bool {
     }
 }
 
-// Write a Swift program to add "Is" to the front of a given string. However, if the string already begins with "Is", return the given string.
+// 5. Write a Swift program to add "Is" to the front of a given string. However, if the string already begins with "Is", return the given string.
 func string_check(sentence :  String) -> String {
     if sentence.hasPrefix("Is") {
         return sentence
@@ -49,7 +67,7 @@ func string_check(sentence :  String) -> String {
     }
 }
 
-// Write a Swift program to remove a character at specified index of a given non-empty string. The value of the specified index will be in the range 0..str.length()-1 inclusive.
+// 6. Write a Swift program to remove a character at specified index of a given non-empty string. The value of the specified index will be in the range 0..str.length()-1 inclusive.
 func remove_char(sentence : String, n : Int) -> String {
     let count = sentence.count
     var new_sentence = sentence
@@ -61,7 +79,7 @@ func remove_char(sentence : String, n : Int) -> String {
     return new_sentence
 }
 
-// Write a Swift program to change the first and last character of a given string.
+// 7. Write a Swift program to change the first and last character of a given string.
 func first_last_remover(sentence : String) -> String {
     let count = sentence.count
     
@@ -77,7 +95,7 @@ func first_last_remover(sentence : String) -> String {
     return result
 }
 
-// Write a Swift program to add the last character (given string) at the front and back of a given string. The length of the given string must be 1 or more.
+// 8. Write a Swift program to add the last character (given string) at the front and back of a given string. The length of the given string must be 1 or more.
 func last_append(sentence : String) -> String {
     let count = sentence.count
     
@@ -91,7 +109,7 @@ func last_append(sentence : String) -> String {
     return last_str + sentence + last_str
 }
 
-// Write a Swift program to check if a given non-negative number is a multiple of 3 or a multiple of 5.
+// 9. Write a Swift program to check if a given non-negative number is a multiple of 3 or a multiple of 5.
 func non_negative_digit_check(number : Int) -> Bool {
     if number % 3 == 0 || number % 5 == 0 {
         return true
@@ -100,7 +118,7 @@ func non_negative_digit_check(number : Int) -> Bool {
     }
 }
 
-// Write a Swift program to take the first two characters from a given string and create a new string with the two characters added at both the front and back.
+// 10. Write a Swift program to take the first two characters from a given string and create a new string with the two characters added at both the front and back.
 func two_digit_adder(sentence : String) -> String {
     let count = sentence.count
     
@@ -112,7 +130,7 @@ func two_digit_adder(sentence : String) -> String {
     return first_two + sentence + first_two
 }
 
-// Write a Swift program to test a given string whether it starts with "Is". Return true or false.
+// 11. Write a Swift program to test a given string whether it starts with "Is". Return true or false.
 func is_string_check(sentence : String) -> Bool {
     if sentence.hasPrefix("Is") {
         return true
@@ -121,7 +139,7 @@ func is_string_check(sentence : String) -> Bool {
     }
 }
 
-// Write a Swift program that return true if either of two given integers is in the range 10..30 inclusive.
+// 12. Write a Swift program that return true if either of two given integers is in the range 10..30 inclusive.
 func range_check(first_digit : Int , second_digit : Int) -> Bool {
     if first_digit >= 10 && first_digit <= 30 {
         return true
@@ -132,7 +150,7 @@ func range_check(first_digit : Int , second_digit : Int) -> Bool {
     }
 }
 
-// Write a Swift program to check if a given string begins with "fix", except the 'f' can be any character or number.
+// 13. Write a Swift program to check if a given string begins with "fix", except the 'f' can be any character or number.
 func find_character(word : String) -> Bool {
     let count = word.count
     
@@ -151,7 +169,7 @@ func find_character(word : String) -> Bool {
 
 }
 
-// Write a Swift program to find the largest number among three given integers.
+// 14. Write a Swift program to find the largest number among three given integers.
 func find_largest(first_number : Int, second_number : Int, third_number : Int) -> Int {
     if first_number > second_number {
         if first_number > third_number {
@@ -168,7 +186,7 @@ func find_largest(first_number : Int, second_number : Int, third_number : Int) -
     }
 }
 
-// Write a Swift program that accept two integer values and to test which value is nearest to the value 10, or return 0 if both integers have same distance from 10.
+// 15. Write a Swift program that accept two integer values and to test which value is nearest to the value 10, or return 0 if both integers have same distance from 10.
 func check_nearest(first_number : Int, second_number : Int) -> Int {
     var subresult_one = 0
     var subresult_two = 0
@@ -194,7 +212,7 @@ func check_nearest(first_number : Int, second_number : Int) -> Int {
     }
 }
 
-// Write a Swift program that accept two integer values and test if they are both in the range 20..30 inclusive, or they are both in the range 30..40 inclusive.
+// 16. Write a Swift program that accept two integer values and test if they are both in the range 20..30 inclusive, or they are both in the range 30..40 inclusive.
 func check_20_40_range(first_number : Int, second_number : Int) -> Bool {
     if (first_number >= 20 && second_number >= 20) && (first_number <= 30 && second_number <= 30) {
         return true
@@ -205,7 +223,7 @@ func check_20_40_range(first_number : Int, second_number : Int) -> Bool {
     }
 }
 
-// Write a Swift program that accept two positive integer values and test whether the larger value is in the range 20..30 inclusive, or return 0 if neither is in that range.
+// 17. Write a Swift program that accept two positive integer values and test whether the larger value is in the range 20..30 inclusive, or return 0 if neither is in that range.
 func check_20_30_range(first_number: Int, second_number: Int) -> Int {
     if (first_number >= 20 && first_number <= 30) || (second_number >= 20 && second_number <= 30) {
         return max(first_number, second_number)
@@ -214,7 +232,7 @@ func check_20_30_range(first_number: Int, second_number: Int) -> Int {
     }
 }
 
-// Write a Swift program to test whether the last digit of the two given non-negative integer values are same or not.
+// 18. Write a Swift program to test whether the last digit of the two given non-negative integer values are same or not.
 func areLastDigitsSame(firstNumber: Int, secondNumber: Int) -> Bool {
     guard firstNumber >= 0 && secondNumber >= 0 else {
         return false
@@ -226,7 +244,7 @@ func areLastDigitsSame(firstNumber: Int, secondNumber: Int) -> Bool {
     return lastDigitFirst == lastDigitSecond
 }
 
-// Write a Swift program to convert the last three characters in upper case. If the string has less than 3 chars, lowercase whatever is there.
+// 19. Write a Swift program to convert the last three characters in upper case. If the string has less than 3 chars, lowercase whatever is there.
 func string_converter(sentence: String) -> String {
     var newSentence = ""
     let characterCount = sentence.count
@@ -242,7 +260,7 @@ func string_converter(sentence: String) -> String {
     }
 }
 
-// Write a Swift program to check if the first instance of "a" in a given string is immediately followed by another "a".
+// 20. Write a Swift program to check if the first instance of "a" in a given string is immediately followed by another "a".
 func first_instance_check(sentence : String) -> Bool {
     if let firstAIndex = sentence.firstIndex(of: "a") {
         let nextIndex = sentence.index(after: firstAIndex)
@@ -257,7 +275,7 @@ func first_instance_check(sentence : String) -> Bool {
     }
 }
 
-// Write a Swift program to create a string made of every other char starting with the first from a given string. So "Python" will return "Pto"
+// 21. Write a Swift program to create a string made of every other char starting with the first from a given string. So "Python" will return "Pto"
 func word_patcher(userword : String) -> String {
     var new_word = ""
     
@@ -274,10 +292,130 @@ func word_patcher(userword : String) -> String {
     return new_word
 }
 
-// Write a Swift program to count the number of 7's in a given array of integers.
+// 22. Write a Swift program to count the number of 7's in a given array of integers.
+func check_seven(array_of_numbers : [Int]) -> Int {
+    var seven_counter = 0
+    for num in array_of_numbers {
+        if num == 7 {
+            seven_counter += 1
+        }
+    }
+    
+    return seven_counter
+}
 
-var greeting = "swift, playground"
+// 23. Write a Swift program to check if one of the first 4 elements in a given array of integers is a 7. The length of the array may be less than 4.
+func check_7array_in4(array_of_numbers : [Int]) -> Bool {
+    if array_of_numbers.count < 4 {
+        return false
+    } else if array_of_numbers.prefix(4).contains(7) {
+        return true
+    }
+    
+    return false
+}
 
+// 24. Write a Swift program to test if the sequence of numbers 1, 2 , 3 appears in a given array of integers somewhere.
+func check_sequence(array_of_numbers : [Int]) -> Bool {
+    guard array_of_numbers.count >= 3 else {
+            return false
+    }
+        
+    for (index, number) in array_of_numbers.enumerated() {
+        if array_of_numbers[index] == 1 && array_of_numbers[index + 1] == 2 && array_of_numbers[index + 2] == 3 {
+            return true
+        }
+    }
+
+    return false
+}
+
+// 25. Write a Swift program to create a new string where all the character "a" have been removed except the first and last positions.
+func a_remover(sentence : String) -> String {
+    var new_sentence = sentence
+    let start = new_sentence.index(after: new_sentence.startIndex)
+    let end = new_sentence.index(before: new_sentence.endIndex)
+    let middle_range = start ..< end
+    
+    guard !sentence.isEmpty else {
+        return "Collected string is too small"
+    }
+       
+    var sub_string = new_sentence.substring(with: middle_range)
+       
+    while sub_string.contains("a") {
+        sub_string.remove(at: sub_string.firstIndex(of: "a")!)
+    }
+       
+    new_sentence.replaceSubrange(middle_range, with: sub_string)
+       
+    return new_sentence
+}
+
+// 26. Write a Swift program to create a string taking characters at indexes 0, 2, 4, 6, 8, .. from a given string.
+func char_remover_atindex(sentence : String) -> String {
+    var new_word = ""
+    
+    if sentence.isEmpty {
+        return "Empty string"
+    } else {
+        for (index, char) in sentence.enumerated() {
+            if (index % 2 ) == 0 {
+               new_word.append(char)
+            }
+        }
+    }
+    
+    return new_word
+}
+
+// 27. Write a Swift program to count the number of times that two 7's are next to each other in a given array of integers.
+func check_double_7(array_of_numbers : [Int]) -> Int {
+    var double_counter = 0
+    
+    guard array_of_numbers.count >= 2 else {
+            return 0
+    }
+    
+    for (index, number) in array_of_numbers.enumerated() {
+        if array_of_numbers[index] == 7 && array_of_numbers[index + 1] == 7 {
+            double_counter += 1
+        }
+    }
+    
+    return double_counter
+}
+
+// 28. Write a Swift program to test whether a value presents sequentially three times in an array of integers or not.
+func check_tripple(array_of_numbers : [Int]) -> Int {
+    var tripple_counter = 0
+    
+    guard array_of_numbers.count >= 3 else {
+            return 0
+    }
+    
+    for (index, number) in array_of_numbers.enumerated() {
+        if array_of_numbers[index] == index && array_of_numbers[index + 1] == index && array_of_numbers[index + 1] == index {
+            tripple_counter += 1
+        }
+    }
+    
+    return tripple_counter
+}
+
+/*
+ Swift Learning Journey
+ Chapter 2 : Arrays
+*/
+
+/*
+ Swift Learning Journey
+ Chapter 3 : Strings
+*/
+
+print("Welcome to my Swift Learning Journey!")
+print("Chapter 1: Basics")
+print("Learn the fundamentals of Swift programming language.")
 // print(summing(firts_digit: 55, second_digit: 5))
 // print(compute(digit: 45))
 // print(accept(first_digit: 10, second_digit: 10))
@@ -299,6 +437,24 @@ var greeting = "swift, playground"
 // print(string_converter(sentence: "hi"))
 // print(first_instance_check(sentence: "abbcaad"))
 // print(word_patcher(userword: "Python"))
+// print(check_seven(array_of_numbers: [5,1,7,3,3,7,3]))
+// print(check_7array_in4(array_of_numbers: [1, 2, 7, 3, 4]))
+// print(check_sequence(array_of_numbers: [1, 2, 3, 4, 5]))
+// print(a_remover(sentence: "aabaaaacdaa"))
+// print(char_remover_atindex(sentence: "abcdefgh"))
+// print(check_double_7(array_of_numbers: [7, 7, 2, 7, 7, 5]))
+// print(check_tripple(array_of_numbers: [1, 1, 1, 2, 2]))
+
+print("Chapter 2: Arrays")
+print("Dive into the world of arrays and their manipulation.")
+
+print("Chapter 3: Strings")
+print("Understand string operations and manipulations in Swift.")
+
+
+
+
+
 
 
 
