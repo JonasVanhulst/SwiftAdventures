@@ -408,6 +408,101 @@ func check_tripple(array_of_numbers : [Int]) -> Int {
  Chapter 2 : Arrays
 */
 
+// 1. Write a Swift program to check if 5 appears as either the first or last element in a given array of integers. The array length should be 1 or more.
+func hasFive(arrayOfNumbers: [Int]) -> Bool {
+    guard arrayOfNumbers.count >= 1 else {
+        return false
+    }
+    
+    return arrayOfNumbers.first == 5 || arrayOfNumbers.last == 5
+}
+
+// 2. Write a Swift program to check whether the first element and the last element of a given array of integers are equal. The array length must be 1 or more.
+func areFirstAndLastEqual(arrayOfNumbers: [Int]) -> Bool {
+    guard arrayOfNumbers.count >= 1 else {
+        return false
+    }
+    
+    return arrayOfNumbers.first == arrayOfNumbers.last
+}
+
+// 3. Write a Swift program to test if two given arrays of integers have the same first and last element. Both arrays length must be 1 or more.
+func haveSameFirstAndLast(arrayOne: [Int], arrayTwo: [Int]) -> Bool {
+    guard arrayOne.count >= 1 && arrayTwo.count >= 1 else {
+        return false
+    }
+    
+    return arrayOne.first == arrayTwo.first && arrayOne.last == arrayTwo.last
+}
+
+// 4. Write a Swift program to compute the sum of all the elements of a given array of integers and length 4.
+func sumOfFourElements(arrayOfNumbers: [Int]) -> Int {
+    guard arrayOfNumbers.count == 4 else {
+        return 0
+    }
+    
+    return arrayOfNumbers.reduce(0, +)
+}
+
+// 5. Write a Swift program to rotate the elements of an array of integers to left direction. Therefore {1, 2, 3} yields {2, 3, 1}.
+func rotateLeft(arrayOfNumbers: [Int]) -> [Int] {
+    guard arrayOfNumbers.count >= 2 else {
+        return arrayOfNumbers
+    }
+    
+    var rotatedArray = arrayOfNumbers
+    let firstElement = rotatedArray.removeFirst()
+    rotatedArray.append(firstElement)
+    
+    return rotatedArray
+}
+
+// 6. Write a Swift program to create a new array with the elements in reverse order of a given array of integers.
+func reverseArray(arrayOfNumbers: [Int]) -> [Int] {
+    guard arrayOfNumbers.count >= 2 else {
+        return arrayOfNumbers
+    }
+    
+    var reversedArray : [Int] = arrayOfNumbers.reversed()
+    return reversedArray
+}
+
+// 7. Write a Swift program to find the larger value of a given array of integers and set all the other elements with that value. Return the changed array.
+func setAllToLargerValue(arrayOfNumbers: [Int]) -> [Int] {
+    guard arrayOfNumbers.count >= 2 else {
+        return arrayOfNumbers
+    }
+    
+    if let max = arrayOfNumbers.max() {
+        var largerArray = arrayOfNumbers
+        
+        for index in 0..<largerArray.count {
+            largerArray[index] = max
+        }
+        
+        return largerArray
+    } else {
+        return arrayOfNumbers
+    }
+}
+
+// 8. Write a Swift program to compute the sum of the first 2 elements of a given array of integers. Return 0 if the length of the given array is 0 and return the first element value If the array length is less than 2.
+func sumOfFirstTwoElements(arrayOfNumbers: [Int]) -> Int {
+    guard !arrayOfNumbers.isEmpty else {
+        return 0
+    }
+    
+    if arrayOfNumbers.count <= 2 {
+        return arrayOfNumbers.startIndex
+    }
+    
+    var firstIndex = arrayOfNumbers[0]
+    var secondIndex = arrayOfNumbers[1]
+    
+    var sum = firstIndex + secondIndex
+    return sum
+}
+
 /*
  Swift Learning Journey
  Chapter 3 : Strings
@@ -447,6 +542,37 @@ print("Learn the fundamentals of Swift programming language.")
 
 print("Chapter 2: Arrays")
 print("Dive into the world of arrays and their manipulation.")
+// Example for function 1
+let array1 = [5, 2, 8, 3]
+print("Function 1 Result: \(hasFive(arrayOfNumbers: array1))")
+
+// Example for function 2
+let array2 = [4, 7, 2, 4]
+print("Function 2 Result: \(areFirstAndLastEqual(arrayOfNumbers: array2))")
+
+// Example for function 3
+let array3_1 = [1, 2, 3]
+let array3_2 = [1, 4, 3]
+print("Function 3 Result: \(haveSameFirstAndLast(arrayOne: array3_1, arrayTwo: array3_2))")
+
+// Example for function 4
+let array4 = [3, 5, 1, 7]
+print("Function 4 Result: \(sumOfFourElements(arrayOfNumbers: array4))")
+
+// Example for function 5
+let array5 = [1, 2, 3]
+print("Function 5 Result: \(rotateLeft(arrayOfNumbers: array5))")
+
+// Example for function 6
+let array6 = [4, 7, 2, 1, 9]
+print("Function 6 Result: \(reverseArray(arrayOfNumbers: array6))")
+
+let array7 = [3, 8, 2, 5, 8, 1]
+print("Function 7 Result: \(setAllToLargerValue(arrayOfNumbers: array7))")
+
+let array8 = [3, 8, 2, 5, 8, 1]
+print("Function 8 Result: \(sumOfFirstTwoElements(arrayOfNumbers: array8))")
+
 
 print("Chapter 3: Strings")
 print("Understand string operations and manipulations in Swift.")
