@@ -503,6 +503,228 @@ func sumOfFirstTwoElements(arrayOfNumbers: [Int]) -> Int {
     return sum
 }
 
+// 9. Write a Swift program to create a new array of length 2 containing the middle elements from two give array of integers and length 3.
+func addMiddleElement(arrayOfNumbers1: [Int], arrayOfNumbers2: [Int] ) -> [Int] {
+    var newArray: [Int] = []
+    
+    guard arrayOfNumbers1.count == 3 && arrayOfNumbers2.count == 3 else {
+        return newArray
+    }
+    
+    newArray.append(arrayOfNumbers1[1])
+    newArray.append(arrayOfNumbers2[1])
+    
+    return newArray
+}
+
+// 10. Write a Swift program to create a new array of length 2 containing the first and last elements from a given array of integers. The given array length must be 1 or more.
+func takeFirstLast(arrayOfNumbers1: [Int]) -> [Int] {
+    var newArray: [Int] = []
+    guard arrayOfNumbers1.count >= 1 else {
+        return newArray
+    }
+    
+    newArray.append(arrayOfNumbers1.first!)
+    newArray.append(arrayOfNumbers1.last!)
+    
+    return newArray
+}
+
+// 11. Write a Swift program to test if an array of integers contains a 3 or a 5.
+func checkContains_3_5(arrayOfNumbers1: [Int]) -> Bool {
+    guard arrayOfNumbers1.count >= 2 else {
+        return false
+    }
+    
+    if arrayOfNumbers1.contains(3) || arrayOfNumbers1.contains(5) {
+        return true
+    } else {
+        return false
+    }
+}
+
+// 12. Write a Swift program to test if an array of integers does not contain a 3 or a 5.
+func checkNotContains_3_5(arrayOfNumbers1: [Int]) -> Bool {
+    guard arrayOfNumbers1.count >= 2 else {
+        return false
+    }
+    
+    if !arrayOfNumbers1.contains(3) || !arrayOfNumbers1.contains(5) {
+        return true
+    } else {
+        return false
+    }
+}
+
+// 13. Write a Swift program to create a new array with double the length of a given array of integers and its last element is the same as the given array. The given array will be length 1 or more. By default, a new integer array contains all 0's.
+func createNewArrayWithDoubleLength(arrayOfNumbers1: [Int]) -> [Int] {
+    var newArray = Array(repeating: 0, count: arrayOfNumbers1.count * 2)
+    
+    for i in 0..<arrayOfNumbers1.count {
+        newArray[i] = arrayOfNumbers1[i]
+    }
+    
+    newArray[arrayOfNumbers1.count * 2 - 1] = arrayOfNumbers1[arrayOfNumbers1.count - 1]
+    
+    return newArray
+}
+
+// 14. Write a Swift program to check if a given array of integers contains 3 twice, or 5 twice.
+func checkTwiceContains_3_5(arrayOfNumbers1: [Int]) -> Bool {
+    guard arrayOfNumbers1.count >= 2 else {
+        return false
+    }
+    var threeCounter: Int = 0
+    var fiveCounter: Int = 0
+    
+    for num in arrayOfNumbers1 {
+        if num == 3 {
+            threeCounter += 1
+        } else if num == 5 {
+            fiveCounter += 1
+        }
+    }
+    
+    return threeCounter == 2 || fiveCounter == 2
+}
+
+// 15. Write a Swift program to check if two given arrays of integers have 0 as their first element.
+func check_contains_0(arrayOfNumbers1: [Int], arrayOfNumbers2: [Int]) -> Bool {
+    guard arrayOfNumbers1.count >= 1 && arrayOfNumbers2.count >= 1 else {
+        return false
+    }
+    
+    if arrayOfNumbers1.first == 0 && arrayOfNumbers2.first == 0 {
+        return true
+    } else {
+        return false
+    }
+}
+
+// 16. Write a Swift program to compute the sum of the values of two given array of integers and each length 2. Find the array which has the largest sum and return the first array if the sum of two given arrays are equal.
+func checkGreatestArray(arrayOfNumbers1: [Int], arrayOfNumbers2: [Int]) -> [Int] {
+    guard arrayOfNumbers1.count >= 2 && arrayOfNumbers2.count >= 2 else {
+        return [0,0,0,0]
+    }
+    
+    var sumOne: Int = 0, sumTwo: Int = 0
+
+    for num in arrayOfNumbers1{
+        sumOne += num
+    }
+    
+    for num in arrayOfNumbers2{
+        sumTwo += num
+    }
+    
+    if sumOne > sumTwo {
+        return arrayOfNumbers1
+    } else if sumOne == sumTwo {
+        return arrayOfNumbers1
+    } else {
+        return arrayOfNumbers2
+    }
+}
+
+// 17. Write a Swift program to create an array of length 2 containing the middle two elements from a given array of integers and even length 2 or more.
+func addMiddleOfArray(arrayOfNumbers1: [Int]) -> [Int] {
+    guard arrayOfNumbers1.count >= 2 else {
+        return [0,0]
+    }
+    
+    var newArray: [Int] = []
+    
+    if arrayOfNumbers1.count % 2 == 0 {
+        let secondValue = arrayOfNumbers1.count / 2
+        let firstValue = secondValue - 1
+        newArray.append(arrayOfNumbers1[firstValue])
+        newArray.append(arrayOfNumbers1[secondValue])
+    }
+    return newArray
+}
+
+// 18. Write a Swift program to test if an array of length four containing all their elements from two given array (each length two) of integers.
+func appendArray(arrayOfNumbers1: [Int], arrayOfNumbers2: [Int]) -> [Int]{
+    guard arrayOfNumbers1.count >= 2 && arrayOfNumbers2.count >= 2 else {
+        return [0,0]
+    }
+    
+    var newArray: [Int] = []
+    
+    newArray.append(contentsOf: arrayOfNumbers1)
+    newArray.append(contentsOf: arrayOfNumbers2)
+    
+    return newArray
+}
+
+// 19. Write a Swift program to swap the first and last elements of a given array of integers. Return the modified array (length will be at least 1).
+func swapFirstLast(arrayOfNumbers1: [Int]) -> [Int]{
+    guard arrayOfNumbers1.count >= 1  else {
+        return [0,0]
+    }
+    
+    var newArray: [Int] = arrayOfNumbers1
+    
+    newArray.swapAt(0, newArray.count - 1)
+    
+    return newArray
+}
+
+// 20. Write a Swift program to create a new array of length 3 containing the elements from the middle of a given array of integers and length will be at least 3.
+func addMiddleOf3(arrayOfNumbers1: [Int]) -> [Int] {
+    guard arrayOfNumbers1.count >= 3 else {
+        return [0,0,0]
+    }
+    
+    var newArray: [Int] = []
+    
+    if arrayOfNumbers1.count % 2 == 1 {
+        let secondValue = arrayOfNumbers1.count / 2
+        let firstValue = secondValue - 1
+        let thirdValue = secondValue + 1
+        newArray.append(arrayOfNumbers1[firstValue])
+        newArray.append(arrayOfNumbers1[secondValue])
+        newArray.append(arrayOfNumbers1[thirdValue])
+    }
+    return newArray
+}
+
+// 21. Write a Swift program to find the largest value from the first, last, and middle values in a given array of integers and length will be at least 1.
+
+// 22. Write a Swift program to create a new array, taking first two elements from a given array of integers. If the length of the given array is less than 2 use the single element of the given array.
+
+// 23. Write a Swift program to create a new array taking the first element from two given arrays of integers. If either array is length 0, ignore that array.
+
+// 24. Write a Swift program to count the number of even integers in the given array.
+
+// 25. Write a Swift program to find the difference between the largest and smallest values in a given array of integers and length 1 or more.
+
+// 26. Write a Swift program to compute the sum of the numbers of a given array of integers except the number immediately after a 11.
+
+// 27. Write a Swift program to check if a given array of integers contains a 3 next to a 3 somewhere.
+
+// 28. Write a Swift program to test if the number of 1's is greater than the number of 3's of a given array of integers.
+
+// 29. Write a Swift program to test if every element is a 2 or a 5 of a given array of integers.
+
+// 30. Write a Swift program to check if a given array of integers contains no 2's or it contains no 5's.
+
+// 31. Write a Swift program to check if a given array of integers contains a 3 next to a 3 or a 5 next to a 5, but not both.
+
+// 32. Write a Swift program to test if a given array of integers contains two 5's next to each other, or there are two 5's separated by one element.
+
+// 33. Write a Swift program to test if there is a 1 in the array with a 3 somewhere later in a given array of integers.
+
+// 34. Write a Swift program to test if a given array of integers contains either 2 even or 2 odd values all next to each other.
+
+// 35. Write a Swift program to test if the value 5 appears in a given array of integers exactly 2 times, and no 5's are next to each other.
+
+// 36. Write a Swift program to test if every 3 that appears in a given array of integers is next to another 3.
+
+// 37. Write a Swift program to test if a given array of integers contains three increasing adjacent numbers.
+
+// 38. Write a Swift program to create a new array that is left shifted from a given array of integers. So [11, 15, 13, 10, 45, 20]
+
 /*
  Swift Learning Journey
  Chapter 3 : Strings
@@ -567,11 +789,65 @@ print("Function 5 Result: \(rotateLeft(arrayOfNumbers: array5))")
 let array6 = [4, 7, 2, 1, 9]
 print("Function 6 Result: \(reverseArray(arrayOfNumbers: array6))")
 
+// Example for function 7
 let array7 = [3, 8, 2, 5, 8, 1]
 print("Function 7 Result: \(setAllToLargerValue(arrayOfNumbers: array7))")
 
+// Example for function 8
 let array8 = [3, 8, 2, 5, 8, 1]
 print("Function 8 Result: \(sumOfFirstTwoElements(arrayOfNumbers: array8))")
+
+// Example for function 9
+let array9_1 = [1, 2, 3]
+let array9_2 = [4, 5, 6]
+print("Funciton 9 Result: \(addMiddleElement(arrayOfNumbers1: array9_1, arrayOfNumbers2: array9_2))")
+
+// Example for function 10
+let array10 = [1, 2, 3]
+print("Funciton 10 Result: \(takeFirstLast(arrayOfNumbers1: array10))")
+
+// Example for function 11
+let array11 = [1, 2, 3]
+print("Funciton 11 Result: \(checkContains_3_5(arrayOfNumbers1: array11))")
+
+// Example for function 12
+let array12 = [1, 2, 3]
+print("Funciton 12 Result: \(checkNotContains_3_5(arrayOfNumbers1: array12))")
+
+// Example for function 13
+let array13 = [1, 2, 3]
+print("Funciton 13 Result: \(createNewArrayWithDoubleLength(arrayOfNumbers1: array13))")
+
+// Example for function 14
+let array14 = [5, 5, 3]
+print("Funciton 14 Result: \(checkTwiceContains_3_5(arrayOfNumbers1: array14))")
+
+// Example for function 15
+let array15_1 = [0, 5, 3]
+let array15_2 = [0, 5, 3]
+print("Funciton 15 Result: \(check_contains_0(arrayOfNumbers1: array15_1, arrayOfNumbers2: array15_2))")
+
+// Example for function 16
+let array16_1 = [8, 2, 3]
+let array16_2 = [1, 4, 3]
+print("Funciton 16 Result: \(checkGreatestArray(arrayOfNumbers1: array16_1, arrayOfNumbers2: array16_2))")
+
+// Example for function 17
+let array17 = [5, 6, 7, 8, 9, 10]
+print("Funciton 17 Result: \(addMiddleOfArray(arrayOfNumbers1: array17))")
+
+// Example for function 18
+let array18_1 = [5, 6]
+let array18_2 = [7, 8]
+print("Funciton 18 Result: \(appendArray(arrayOfNumbers1: array18_1, arrayOfNumbers2: array18_2))")
+
+// Example for function 19
+let array19 = [5, 6, 7, 8, 9, 10]
+print("Funciton 19 Result: \(swapFirstLast(arrayOfNumbers1: array19))")
+
+// Example for function 20
+let array20 = [7, 5, 4, 1, 3, 0, 9]
+print("Funciton 20 Result: \(addMiddleOf3(arrayOfNumbers1: array20))")
 
 
 print("Chapter 3: Strings")
