@@ -690,16 +690,114 @@ func addMiddleOf3(arrayOfNumbers1: [Int]) -> [Int] {
 }
 
 // 21. Write a Swift program to find the largest value from the first, last, and middle values in a given array of integers and length will be at least 1.
+func checkLargest(arrayOfNumbers1: [Int]) -> Int {
+    guard arrayOfNumbers1.count >= 1 else {
+        return 0
+    }
+    
+    var middleValue: Int = arrayOfNumbers1.count / 2
+    var firstValue: Int = arrayOfNumbers1.first ?? 0
+    var lastValue: Int = arrayOfNumbers1.last ?? 0
+    
+    let largestValue = max(firstValue, lastValue, middleValue)
+    
+    return largestValue
+}
 
 // 22. Write a Swift program to create a new array, taking first two elements from a given array of integers. If the length of the given array is less than 2 use the single element of the given array.
+func takeFirstSecond(arrayOfNumbers1: [Int]) -> [Int] {
+    guard arrayOfNumbers1.count >= 1 else {
+        return [0]
+    }
+    
+    var newArray: [Int] = []
+    var firstValue: Int = arrayOfNumbers1.first ?? 0
+    var secondValue: Int = arrayOfNumbers1[1]
+    
+    newArray.append(firstValue)
+    newArray.append(secondValue)
+    
+    return newArray
+}
 
 // 23. Write a Swift program to create a new array taking the first element from two given arrays of integers. If either array is length 0, ignore that array.
+func takeFirstSecondInTwoArrays(arrayOfNumbers1: [Int], arrayOfNumbers2: [Int]) -> [Int] {
+    guard !arrayOfNumbers1.isEmpty && !arrayOfNumbers2.isEmpty else {
+         return []
+     }
+
+    var newArray = [Int]()
+    
+    if arrayOfNumbers1.count == 0 && arrayOfNumbers2.count != 0 {
+        newArray.append(arrayOfNumbers2.first!)
+    } else if arrayOfNumbers1.count != 0 && arrayOfNumbers2.count == 0 {
+        newArray.append(arrayOfNumbers1.first!)
+    } else {
+        newArray.append(arrayOfNumbers1.first!)
+        newArray.append(arrayOfNumbers2.first!)
+    }
+    
+    return newArray
+}
 
 // 24. Write a Swift program to count the number of even integers in the given array.
+func countEvenNumbers(arrayOfNumbers1: [Int]) -> Int {
+    guard arrayOfNumbers1.count >= 1 else {
+        return 0
+    }
+    
+    var counter: Int = 0
+    
+    for numbers in arrayOfNumbers1 {
+        if numbers % 2 == 0 {
+            counter += 1
+        }
+    }
+    
+    return counter
+}
 
 // 25. Write a Swift program to find the difference between the largest and smallest values in a given array of integers and length 1 or more.
+func diffMinMax(arrayOfNumbers1: [Int]) -> Int {
+    guard !arrayOfNumbers1.isEmpty else {
+        return 0
+    }
+    
+    var minValue = arrayOfNumbers1[0]
+    var maxValue = arrayOfNumbers1[0]
+    
+    for x in 0..<arrayOfNumbers1.count {
+        minValue = min(arrayOfNumbers1[x], minValue)
+        maxValue = max(arrayOfNumbers1[x], maxValue)
+    }
+    
+    return maxValue - minValue
+}
+
 
 // 26. Write a Swift program to compute the sum of the numbers of a given array of integers except the number immediately after a 11.
+func sumExceptAfter11(arrayOfNumbers: [Int]) -> Int {
+    guard !arrayOfNumbers.isEmpty else {
+        return 0
+    }
+    
+    var sum = 0
+    var skipNext = false
+    
+    for number in arrayOfNumbers {
+        if skipNext {
+            skipNext = false
+        } else {
+            if number == 11 {
+                skipNext = true
+            } else {
+                sum += number
+            }
+        }
+    }
+    
+    return sum
+}
 
 // 27. Write a Swift program to check if a given array of integers contains a 3 next to a 3 somewhere.
 
@@ -848,6 +946,31 @@ print("Funciton 19 Result: \(swapFirstLast(arrayOfNumbers1: array19))")
 // Example for function 20
 let array20 = [7, 5, 4, 1, 3, 0, 9]
 print("Funciton 20 Result: \(addMiddleOf3(arrayOfNumbers1: array20))")
+
+// Example for function 21
+let array21 = [7, 5, 4, 1, 3, 0, 9]
+print("Funciton 21 Result: \(checkLargest(arrayOfNumbers1: array21))")
+
+// Example for function 22
+let array22 = [7, 5, 4, 1, 3, 0, 9]
+print("Funciton 22 Result: \(takeFirstSecond(arrayOfNumbers1: array22))")
+
+// Example for function 23
+let array23_1 = [5, 6]
+let array23_2 = [7, 8]
+print("Funciton 23 Result: \(takeFirstSecondInTwoArrays(arrayOfNumbers1: array23_1, arrayOfNumbers2: array23_2))")
+
+// Example for function 24
+let array24 = [7, 5, 4, 1, 3, 0, 9]
+print("Funciton 24 Result: \(countEvenNumbers(arrayOfNumbers1: array24))")
+
+// Example for function 25
+let array25 = [7, 5, 4, 1, 3, 0, 9]
+print("Funciton 25 Result: \(diffMinMax(arrayOfNumbers1: array25))")
+
+// Example for function 26
+let array26 = [1, 2, 11, 3, 4, 11, 5]
+print("Funciton 26 Result: \(sumExceptAfter11(arrayOfNumbers: array26))")
 
 
 print("Chapter 3: Strings")
