@@ -800,28 +800,221 @@ func sumExceptAfter11(arrayOfNumbers: [Int]) -> Int {
 }
 
 // 27. Write a Swift program to check if a given array of integers contains a 3 next to a 3 somewhere.
+func checkOnDubble3(_ arrayOfInt: [Int]) -> Bool {
+    guard !arrayOfInt.isEmpty else {
+        return false
+    }
+
+    for i in 0.. < arrayOfInt.count - 1 {
+        if arrayOfInt[i] == 3 && arrayOfInt[i + 1] == 3 {
+        return true
+        }
+    }
+    return false
+}
 
 // 28. Write a Swift program to test if the number of 1's is greater than the number of 3's of a given array of integers.
+func checkNumbers(_ arrayOfInt: [Int]) -> Bool {
+    var isIncreasing = 0
+    var isDecreasing = 0
+
+    guard !arrayOfInt.isEmpty else {
+        return false
+    }
+    
+    for i in 0..<arrayOfInt.count {
+        if arrayOfInt[i] == 1{
+        isDecreasing += 1
+        } else if arrayOfInt[i] == 3 {
+        isIncreasing += 1
+        }
+    }
+
+  return isDecreasing > isIncreasing
+}
 
 // 29. Write a Swift program to test if every element is a 2 or a 5 of a given array of integers.
+func testing2or5(_ arrayOfInt: [Int]) -> Bool {
+    guard !arrayOfInt.isEmpty else {
+        return false
+    }
+    
+    for i in 0..<arrayOfInt.count {
+        if arrayOfInt[i] == 2 || arrayOfInt[i] == 5{
+        return true
+        }
+    }
+
+  return false
+}
 
 // 30. Write a Swift program to check if a given array of integers contains no 2's or it contains no 5's.
+func testingNot2or5(_ arrayOfInt: [Int]) -> Bool {
+    guard !arrayOfInt.isEmpty else {
+        return false
+    }
+
+    var number_count2 = 0
+    var number_count5 = 0
+    
+    for numbers in arrayOfInt {
+        if numbers == 2 {
+        number_count2 += 1
+        } else if numbers == 5 {
+        number_count5 += 1
+        }
+    }
+  
+  return number_count2 == 0 || number_count5 == 0
+}
 
 // 31. Write a Swift program to check if a given array of integers contains a 3 next to a 3 or a 5 next to a 5, but not both.
+func check33Or55(_ arrayOfInt: [Int]) -> Bool {
+    guard !arrayOfInt.isEmpty else {
+        return false
+    }
+
+    var numberCheck3 = false
+    var numberCheck5 = false
+
+    for index in 0..<(arrayOfInt.count - 1) {
+        if arrayOfInt[index] == 3 && arrayOfInt[index + 1] == 3 {
+            numberCheck3 = true
+        } else if arrayOfInt[index] == 5 && arrayOfInt[index + 1] == 5 {
+            numberCheck5 = true
+        }
+    }
+  
+  return (numberCheck3 && !numberCheck5) || (!numberCheck3 && numberCheck5)
+}
 
 // 32. Write a Swift program to test if a given array of integers contains two 5's next to each other, or there are two 5's separated by one element.
+func check55(_ arrayOfInt: [Int]) -> Bool {
+  guard !arrayOfInt.isEmpty else {
+    return false
+  }
+
+  for index in 0..<(arrayOfInt.count - 1) {
+    if (arrayOfInt[index] == 5 && arrayOfInt[index + 1] == 5) || (arrayOfInt[index] == 5 && arrayOfInt[index + 2] == 5) {
+        return true
+    }
+  }
+  
+  return false
+}
 
 // 33. Write a Swift program to test if there is a 1 in the array with a 3 somewhere later in a given array of integers.
+func check1and3(_ arrayOfInt: [Int]) -> Bool {
+  guard !arrayOfInt.isEmpty else {
+    return false
+  }
+
+  var check1FollowedBy3 = false
+  
+  for index in 0..<(arrayOfInt.count - 1) {
+      if arrayOfInt[index] == 1 {
+          for nextIndex in index+1..<arrayOfInt.count {
+              if arrayOfInt[nextIndex] == 3 {
+                  check1FollowedBy3 = true
+                  break
+              }
+          }
+      }
+  }
+  
+  return check1FollowedBy3
+}
 
 // 34. Write a Swift program to test if a given array of integers contains either 2 even or 2 odd values all next to each other.
+func check2OddOrEven(_ arrayOfInt: [Int]) -> Bool {
+  guard !arrayOfInt.isEmpty else {
+    return false
+  }
+
+  var hasTwoEvenOrOddAdjacent = false
+
+  for i in 0..<(arrayOfInt.count - 1) {
+      if arrayOfInt[i] % 2 == 0 && arrayOfInt[i+1] % 2 == 0 {
+          hasTwoEvenOrOddAdjacent = true
+          break
+      } 
+      
+      if arrayOfInt[i] % 2 != 0 && arrayOfInt[i+1] % 2 != 0 {
+          hasTwoEvenOrOddAdjacent = true
+          break
+      }
+  }
+
+  return hasTwoEvenOrOddAdjacent
+}
 
 // 35. Write a Swift program to test if the value 5 appears in a given array of integers exactly 2 times, and no 5's are next to each other.
+func check2OddOrEven(_ arrayOfInt: [Int]) -> Bool {
+    guard !arrayOfInt.isEmpty else {
+        return false
+    }
+
+    var has5 = 0
+
+    for i in 0..<(arrayOfInt.count - 1) {
+        if arrayOfInt[i] == 5 && arrayOfInt[i + 1] != 5 {
+            has5 += 1
+        }
+    }
+
+    return has5 == 2
+}
 
 // 36. Write a Swift program to test if every 3 that appears in a given array of integers is next to another 3.
+func check33(_ arrayOfInt: [Int]) -> Bool {
+    guard !arrayOfInt.isEmpty else {
+        return false
+    }
+
+    var numberCheck3 = false
+
+    for index in 0..<(arrayOfInt.count - 1) {
+        if arrayOfInt[index] == 3 && arrayOfInt[index + 1] == 3 {
+            numberCheck3 = true
+        } 
+    }
+
+  return numberCheck3
+}
 
 // 37. Write a Swift program to test if a given array of integers contains three increasing adjacent numbers.
+func checkIncrement(_ arrayOfInt: [Int]) -> Bool{
+    guard !arrayOfInt.isEmpty else {
+        return false
+    }
 
-// 38. Write a Swift program to create a new array that is left shifted from a given array of integers. So [11, 15, 13, 10, 45, 20]
+    var check3increasment = false
+  
+    for i in 1..<arrayOfInt.count - 1{
+      if arrayOfInt[i] == arrayOfInt[i + 1] - 1 && arrayOfInt[i + 1] == arrayOfInt[i + 2] - 1 {
+        check3increasment = true
+      }
+    }
+
+    return check3increasment
+}
+
+// 38. Write a Swift program to create a new array that is left shifted from a given array of integers. So [11, 15, 13, 10, 45, 20] will be [15, 13, 10, 45, 20, 11].
+func shiftLeft(_ arrayOfInt: [Int]) -> [Int]{
+    guard !arrayOfInt.isEmpty else {
+        return [0]
+    }
+
+    var newArray = arrayOfInt
+  
+    for i in 1..<arrayOfInt.count {
+      newArray[i - 1] = arrayOfInt[i]
+    }
+
+    newArray[newArray.count - 1] = arrayOfInt.first!
+
+    return newArray
+}
 
 /*
  Swift Learning Journey
@@ -972,6 +1165,53 @@ print("Funciton 25 Result: \(diffMinMax(arrayOfNumbers1: array25))")
 let array26 = [1, 2, 11, 3, 4, 11, 5]
 print("Funciton 26 Result: \(sumExceptAfter11(arrayOfNumbers: array26))")
 
+// Example for function 27
+let array27 = [1, 2, 11, 3, 4, 11, 5]
+print("Funciton 27 Result: \(checkOnDubble3(array27))")
+
+// Example for function 28
+let array28 = [1, 2, 11, 3, 4, 11, 5]
+print("Funciton 28 Result: \(checkNumbers(array28))")
+
+// Example for function 29
+let array29 = [1, 2, 11, 3, 4, 11, 5]
+print("Funciton 29 Result: \(testing2or5(array29))")
+
+// Example for function 30
+let array30 = [1, 2, 11, 3, 4, 11, 5]
+print("Funciton 30 Result: \(testingNot2or5(array30))")
+
+// Example for function 31
+let array31 = [5, 5, 1, 3, 3]
+print("Funciton 31 Result: \(check33Or55(array31))")
+
+// Example for function 32
+let array32 = [5, 0, 5, 3, 3]
+print("Funciton 32 Result: \(check55(array32))")
+
+// Example for function 33
+let array33 = [5, 0, 5, 3, 3]
+print("Funciton 33 Result: \(check1and3(array33))")
+
+// Example for function 34
+let array34 = [5, 0, 1, 6, 2]
+print("Funciton 34 Result: \(check2OddOrEven(array34))")
+
+// Example for function 35
+let array35 = [5, 0, 5, 3, 3]
+print("Funciton 35 Result: \(check2OddOrEven(array35))")
+
+// Example for function 36
+let array36 = [5, 0, 5, 3, 3]
+print("Funciton 36 Result: \(check33(array36))")
+
+// Example for function 37
+let array37 = [5, 0, 5, 3, 3]
+print("Funciton 37 Result: \(check1and3(array37))")
+
+// Example for function 38
+let array38 = [1, 2, 7, 4, 5, 1]
+print("Funciton 38 Result: \(checkIncrement(array38))")
 
 print("Chapter 3: Strings")
 print("Understand string operations and manipulations in Swift.")
