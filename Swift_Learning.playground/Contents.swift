@@ -12,6 +12,7 @@
 */
 
 import UIKit
+import foundation
 
 /*
  Swift Learning Journey
@@ -1021,37 +1022,353 @@ func shiftLeft(_ arrayOfInt: [Int]) -> [Int]{
  Chapter 3 : Strings
 */
 
+// 1. Write a Swift program to draw a HTML string as bold or italic text. 
+func htmlBodyTag(_ tag: String, _ title: String) -> String {
+  let tagName = "<\(tag)>"
+  let endTag = ""
+
+  return "\(tagName) \(title) \(endTag)"
+}
+
+// 2. Write a Swift program to insert a given string to another given string where the second string will be in the middle of the first string.
+func combineString(_ string1: String, _ word: String) -> String {
+    let mid = string1.count / 2
+    let start = string1.prefix(mid)
+    let end = string1.suffix(string1.count - mid)
+  
+    return start + word + end
+}
+
+// 3. Write a Swift program to create a string made of two copies of the last two characters of a given string. The given string length must be at least 2.
+func lastTwoAsString(_ string1: String) -> String {
+    var newString: String = ""
+    let lastTwo = string1.suffix(2)
+
+    for _ in 0..<2 {
+       newString.append(contentsOf: lastTwo)
+    }
+     
+    return newString
+}
+
+// 4. Write a Swift program to create a new string made of a copy of the first two characters of a given string. If the given string is shorter than length 2, return whatever there is.
+func firstTwoAsString(_ string1: String) -> String {
+    let newString = string1.prefix(2)
+
+    return "\(newString)"
+}
+
+// 5. Write a Swift program to return the first half of a given string of even length.
+func firstHalf(_ string1: String) -> String {
+    guard string1.count % 2 == 0 else {
+      return "[ERROR] : String isn't even"
+    }
+
+    let half = string1.count / 2
+
+    return String(string1.prefix(half))
+}
+
+
+// 6. Write a Swift program to create a new string without the first and last character of a given string. The string length must be at least 2.
+func removeFirstLast(_ string1: String) -> String {
+    var string2 = string1
+
+    guard string2.count > 2 else {
+      return "[ERROR] : String is too short"
+    }
+  
+    string2.removeFirst()
+    string2.removeLast()
+  
+    return string2
+}
+
+// 7. Write a Swift program that accept two strings of different length and return a string of the form short+long+short. Two given string's length may be 0.
+func combineShortLongShort(_ string1: String, _ string2: String) -> String {
+    if string1.count < string2.count {
+        return string1 + string2 + string1
+    } else {
+        return string2 + string1 + string2
+    }
+}
+
+// 8. Write a Swift program that accept two strings and return their concatenation, except the first char of each string. The given strings length must be at least 1.
+func removeFirstOfBoth(_ string1: String, _ string2: String) -> String {
+    var string1Copy = string1
+    var string2Copy = string2
+    var result = ""
+    if !string1Copy.isEmpty {
+        string1Copy.removeFirst()
+    }
+    if !string2Copy.isEmpty {
+        string2Copy.removeFirst()
+    }
+
+    result.append(contentsOf: string1Copy)
+    result.append(contentsOf: string2Copy)
+  
+    return result
+}
+
+// 9. Write a Swift program to move the first two characters of a given string to the end. The given string length must be at least 2.
+func setFirstTwoAtBack(_ string1: String) -> String {
+    var newString: String = ""
+    var str1 = string1
+
+    let firstTwo = string1.prefix(2)
+
+    str1.removeFirst()
+    str1.removeFirst()
+  
+    newString.append(contentsOf: str1)
+    newString.append(contentsOf: firstTwo)
+
+    return newString
+}
+
+// 10. Write a Swift program to move the last two characters of a given string to the start. The given string length must be at least 2.
+func setLastTwoAsFirst(_ string1: String) -> String {
+    let lastTwo = string1.suffix(2)
+    var newString: String = ""
+    var str1 = string1
+
+    str1.removeLast()
+    str1.removeLast()
+  
+    newString.append(contentsOf: lastTwo)
+    newString.append(contentsOf: str1)
+
+    return newString
+}
+
+// 11. Write a Swift program to create a new string without the first and last character of a given string. The string may be any length, including 0.
+func removeFirstLast(_ string1: String) -> String {
+    let string2 = string1.dropFirst().dropLast()
+
+    return String(string2)
+}
+
+// 12. Write a Swift program to create a new string taking the middle two characters of a given string of even length. The given string length must be at least 2.
+func getMiddleTwoChars(_ string: String) -> String {
+    guard string.count >= 2 && string.count % 2 == 0 else {
+        return "nil"
+    }
+
+    let middleIndex = string.index(string.startIndex, offsetBy: string.count / 2)
+    let startIndex = string.index(before: middleIndex)
+    let endIndex = string.index(after: middleIndex)
+
+    return String(string[startIndex..<endIndex])
+}
+
+// 13. Write a Swift program to test if a given string starts with "ab".
+func checkStartab(_ string1: String) -> String {
+  guard string1.count >= 2 else {
+      return "nil"
+  }
+
+  let firstTwo = string1.prefix(2)
+
+  if firstTwo == "ab" {
+    return "yes"
+  } else {
+    return "no"
+  }
+}
+
+// 14. Write a Swift program to create a new string made of the first and last n chars from a given string. The string length will be at least n.
+func getFirstLastofUser(_ string1: String, _ index: Int) -> String {
+  guard string1.count >= 2 else {
+      return "nil"
+  }
+  var newString: String = ""
+  let first = String(string1.prefix(index))
+  let last = String(string1.suffix(index))
+
+  newString.append(first)
+  newString.append(last)
+
+  return newString  
+}
+
+// 15. Write a Swift program to create a new string of length three from a given string of odd length from its middle. The string length must be three.
+func createStringFromMiddle(_ string1: String) -> String {
+    guard string1.count >= 3 else {
+        return "nil"
+    }
+
+    let middleIndex = string1.index(string1.startIndex, offsetBy: string1.count / 2)
+    let middleChar = string1[middleIndex]
+    let prevMidleIndex = string1.index(before: middleIndex)
+    let nextMidleIndex = string1.index(after: middleIndex)
+  
+    return String(string1[prevMidleIndex]) + String(middleChar) + String(string1[nextMidleIndex])
+}
+
+
+// 16. Write a Swift program to concate two given strings and return the new string. If the new string creates a double character then omit one of the character. so "vwx" and "xyz" will return "vwxyz".
+func combineStringWithoutDouble(_ string1: String, _ string2: String) -> String {
+  var str1 = string1
+  let str2 = string2
+
+  if str1.last == str2.first {
+    str1.removeLast()
+  }
+
+  return str1 + str2
+}
+
+// 17. Write a Swift program to create a new string of any length from a given string where the last two characters are swapped, so "abcde" will be "abced".
+func swapLastTwo(_ string1: String) -> String {
+  var string2 = string1
+  
+  let lastIndex = string2.removeLast()
+  let lastTwo = string2.removeLast()
+  
+  string2.append(lastIndex)
+  string2.append(lastTwo)
+  
+  return string2                                    
+}
+
+// 18. Write a Swift program to return "abc" or "xyz" if a given string begins with "abc" or "xyz" otherwise return the empty string.
+func checkStart(_ string1: String) -> String {
+  guard string1.count >= 3 else {
+      return "nil"
+  }
+
+  let firstTwo = string1.prefix(3)
+
+  if firstTwo == "abc" {
+    return String(firstTwo)
+  } else if firstTwo == "xyz" {
+    return String(firstTwo)
+  } else {
+    return ""
+  }
+}
+
+// 19. Write a Swift program to check if the first two characters are same of the last two characters of a given string.
+func checkStartEnd(_ string1: String) -> Bool {
+  let firstTwo = string1.prefix(2)
+  let lastTwo = string1.suffix(2)
+
+  if firstTwo == lastTwo {
+    return true
+  } else {
+    return false
+  }
+}
+
+// 20. Write a Swift program to create a new string made of 2 copies of the first 2 characters of a given string. The string may be any length.
+func firstTwo(_ string1: String) -> String {
+    let newString = string1.prefix(2)
+
+    return "\(newString)" + "\(newString)"
+}
+
+// 21. Write a Swift program to check if the first or last characters are 'a' of a given string, return the given string without those 'a' characters, and otherwise return the given string. 
+func removeAatFirstLast(_ string1: String) -> String {
+  var newString = string1
+
+  if newString.hasPrefix("a") {
+    newString.removeFirst()
+  }
+
+  if newString.hasSuffix("a") {
+    newString.removeLast()
+  }
+
+  return newString
+}
+
 print("Welcome to my Swift Learning Journey!")
 print("Chapter 1: Basics")
 print("Learn the fundamentals of Swift programming language.")
-// print(summing(firts_digit: 55, second_digit: 5))
-// print(compute(digit: 45))
-// print(accept(first_digit: 10, second_digit: 10))
-// print(digit_check(first_digit: 12, second_digit: 5))
-// print(string_check(sentence: "Is swift"))
-// print(remove_char(sentence: "Python", n: 1))
-// print(first_last_remover(sentence: "Apple"))
-// print(last_append(sentence: "Apple"))
-// print(non_negative_digit_check(number: 33))
-// print(two_digit_adder(sentence: "Apple"))
-// print(is_string_check(sentence: "I s appel "))
-// print(range_check(first_digit: 15, second_digit: 40))
-// print(find_character(word: "fix gold"))
-// print(find_largest(first_number: 200, second_number: 2, third_number: 130))
-// print(check_nearest(first_number: 8, second_number: 13))
-// print(check_20_40_range(first_number: 20, second_number: 30))
-// print(check_20_30_range(first_number: 22, second_number: 29))
-// print(areLastDigitsSame(firstNumber: 3, secondNumber: 13))
-// print(string_converter(sentence: "hi"))
-// print(first_instance_check(sentence: "abbcaad"))
-// print(word_patcher(userword: "Python"))
-// print(check_seven(array_of_numbers: [5,1,7,3,3,7,3]))
-// print(check_7array_in4(array_of_numbers: [1, 2, 7, 3, 4]))
-// print(check_sequence(array_of_numbers: [1, 2, 3, 4, 5]))
-// print(a_remover(sentence: "aabaaaacdaa"))
-// print(char_remover_atindex(sentence: "abcdefgh"))
-// print(check_double_7(array_of_numbers: [7, 7, 2, 7, 7, 5]))
-// print(check_tripple(array_of_numbers: [1, 1, 1, 2, 2]))
+// Example 1
+print(summing(firts_digit: 55, second_digit: 5))
+
+// Example 2
+print(compute(digit: 45))
+
+// Example 3
+print(accept(first_digit: 10, second_digit: 10))
+
+// Example 4
+print(digit_check(first_digit: 12, second_digit: 5))
+
+// Example 5
+print(string_check(sentence: "Is swift"))
+
+// Example 6
+print(remove_char(sentence: "Python", n: 1))
+
+// Example 7
+print(first_last_remover(sentence: "Apple"))
+
+// Example 8
+print(last_append(sentence: "Apple"))
+
+// Example 9
+print(non_negative_digit_check(number: 33))
+
+// Example 10
+print(two_digit_adder(sentence: "Apple"))
+
+// Example 11
+print(is_string_check(sentence: "I s appel "))
+
+// Example 12
+print(range_check(first_digit: 15, second_digit: 40))
+
+// Example 13
+print(find_character(word: "fix gold"))
+
+// Example 14
+print(find_largest(first_number: 200, second_number: 2, third_number: 130))
+
+// Example 15
+print(check_nearest(first_number: 8, second_number: 13))
+
+// Example 16
+print(check_20_40_range(first_number: 20, second_number: 30))
+
+// Example 17
+print(check_20_30_range(first_number: 22, second_number: 29))
+
+// Example 18
+print(areLastDigitsSame(firstNumber: 3, secondNumber: 13))
+
+// Example 19
+print(string_converter(sentence: "hi"))
+
+// Example 20
+print(first_instance_check(sentence: "abbcaad"))
+
+// Example 21
+print(word_patcher(userword: "Python"))
+
+// Example 22
+print(check_seven(array_of_numbers: [5,1,7,3,3,7,3]))
+
+// Example 23
+print(check_7array_in4(array_of_numbers: [1, 2, 7, 3, 4]))
+
+// Example 24
+print(check_sequence(array_of_numbers: [1, 2, 3, 4, 5]))
+
+// Example 25
+print(a_remover(sentence: "aabaaaacdaa"))
+
+// Example 26
+print(char_remover_atindex(sentence: "abcdefgh"))
+
+// Example 27
+print(check_double_7(array_of_numbers: [7, 7, 2, 7, 7, 5]))
+
+// Example 28
+print(check_tripple(array_of_numbers: [1, 1, 1, 2, 2]))
 
 print("Chapter 2: Arrays")
 print("Dive into the world of arrays and their manipulation.")
@@ -1216,9 +1533,67 @@ print("Funciton 38 Result: \(checkIncrement(array38))")
 print("Chapter 3: Strings")
 print("Understand string operations and manipulations in Swift.")
 
+// Example 1PythonResult: \(htmlBodyTag("h1", "Hello, World!"))")
 
+// Example 2
+print("Funciton 2 of strings Result: \(combineString("[]", "Hello, World!"))")
 
+// Example 3
+print("Funciton 3 of strings Result: \(lastTwoAsString("java"))")
 
+// Example 4
+print("Funciton 4 of strings Result: \(firfirstTwoAsStringstHalf("Jave"))")
+
+// Example 5
+print("Funciton 5 of strings Result: \(firstHalf("Python"))")
+
+// Example 6
+print("Funciton 6 of strings Result: \(removeFirstLast("Swift"))")
+
+// Example 7
+print("Funciton 7 of strings Result: \(combineShortLongShort("Swift", "_PROGRAMMING_")))")
+
+// Example 8
+print("Funciton 8 of strings Result: \(removeFirstOfBoth("swift", "coding"))")
+
+// Example 9
+print("Funciton 9 of strings Result: \(setFirstTwoAtBack("Swift"))")
+
+// Example 10
+print("Funciton 10 of strings Result: \(setLastTwoAsFirst("Swift"))")
+
+// Example 11
+print("Funciton 11 of strings Result: \(removeFirstLast("Swift"))")
+
+// Example 12
+print("Funciton 12 of strings Result: \(getMiddleTwoChars("Python"))")
+
+// Example 13
+print("Funciton 13 of strings Result: \(checkStartab("abpqrs"))")
+
+// Example 14
+print("Funciton 14 of strings Result: \(getFirstLastofUser("Python", 2))")
+
+// Example 15
+print("Funciton 15 of strings Result: \(createStringFromMiddle("Swift"))")
+
+// Example 16
+print("Funciton 16 of strings Result: \(combineStringWithoutDouble("VWX", "XYZ"))")
+
+// Example 17
+print("Funciton 17 of strings Result: \(swapLastTwo("abcde"))")
+
+// Example 18
+print("Funciton 18 of strings Result: \(checkStart("xyzwujkejl"))")
+
+// Example 19
+print("Funciton 19 of strings Result: \(checkStartEnd("abcdefab"))")
+
+// Example 20
+print("Funciton 20 of strings Result: \(firstTwo("Swift"))")
+
+// Example 21
+print("Funciton 21 of strings Result: \(removeAatFirstLast("abcda"))")
 
 
 
