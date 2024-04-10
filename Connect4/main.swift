@@ -10,7 +10,7 @@ enum players {
 
 struct ConnectFour {
     var board = Array(repeating: Array(repeating: "⚪️", count: BOARD_WIDTH), count: BOARD_HEIGHT)
-    var player: players = .Red
+    var player: players = .Yellow
 
     /**
      * Function to print the header at the start of each game
@@ -74,19 +74,57 @@ struct ConnectFour {
      * @return player
      */    
     func checkWin() -> players? {
-        // check horizontal
-        // check vertical
-        // check diagonal
-        // check anti-diagonal
-        return nil // nobody won
+      
+      // check horizontal
+      for row in 0..<BOARD_HEIGHT {
+          for col in 0..<BOARD_WIDTH - 3 {
+              if board[row][col] != "⚪️" && board[row][col] == board[row][col + 1] && board[row][col + 1] == board[row][col + 2] && board[row][col + 2] == board[row][col + 3] {
+                  return board[row][col] == "🟡" ? .Yellow : .Red
+              }
+          }
+      }
+      // check vertical
+      for row in 0..<BOARD_HEIGHT - 3 {
+          for col in 0..<BOARD_WIDTH {
+              if board[row][col] != "⚪️" && board[row][col] == board[row + 1][col] && board[row + 1][col] == board[row + 2][col] && board[row + 2][col] == board[row + 3][col] {
+                  return board[row][col] == "🟡" ? .Yellow : .Red
+              }
+          }
+      }
+      // check diagonal
+      // check anti-diagonal
+      return nil // nobody won
     }
 }
 
 func main () {
-  let game = ConnectFour()
+  // Creating the game object
+  var game = ConnectFour()
 
+  // Print the welcome message one time.
   game.printHeader()
-  game.printBoard()
+
+  // While there is no winner
+  while (game.checkWin() == nil) {
+    game.printBoard()
+
+    var isValidMove = false
+    while !isValidMove {
+        print("It's \(game.player)'s turn. Enter a column number (0-6): ")
+        let userInput = readLine()
+        if let input = userInput, let column = Int(input) {
+            isValidMove = game.makeMoves(column: column)
+        } else {
+            print("Invalid input!")
+        }
+    }
+  }
+
+  if let winner = game.checkWin() {
+    print("Player \(winner) wins!")
+  } else {
+    print("It's a draw!")
+  }
 }
 
 main()
