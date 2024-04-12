@@ -1,7 +1,7 @@
 import Foundation
 
-let BOARD_WIDTH = 7
-let BOARD_HEIGHT = 6
+let BOARD_WIDTH: Int = 7
+let BOARD_HEIGHT: Int = 6
 
 enum players {
     case Red
@@ -9,7 +9,7 @@ enum players {
 }
 
 struct ConnectFour {
-    var board = Array(repeating: Array(repeating: "⚪️", count: BOARD_WIDTH), count: BOARD_HEIGHT)
+    var board: Array = Array(repeating: Array(repeating: "⚪️", count: BOARD_WIDTH), count: BOARD_HEIGHT)
     var player: players = .Yellow
 
     /**
@@ -92,7 +92,22 @@ struct ConnectFour {
           }
       }
       // check diagonal
+      for row in 0..<BOARD_HEIGHT - 3 {
+          for col in 0..<BOARD_WIDTH - 3 {
+              if board[row][col] != "⚪️" && board[row][col] == board[row + 1][col + 1] && board[row + 1][col + 1] == board[row + 2][col + 2] && board[row + 2][col + 2] == board[row + 3][col + 3] {
+                  return board[row][col] == "🟡" ? .Yellow : .Red
+              }
+          }
+      }
       // check anti-diagonal
+      for row in 3..<BOARD_HEIGHT {
+          for col in 0..<BOARD_WIDTH - 3 {
+              if board[row][col] != "⚪️" && board[row][col] == board[row - 1][col + 1] && board[row - 1][col + 1] == board[row - 2][col + 2] && board[row - 2][col + 2] == board[row - 3][col + 3] {
+                  return board[row][col] == "🟡" ? .Yellow : .Red
+              }
+          }
+      }
+      
       return nil // nobody won
     }
 }
@@ -108,10 +123,10 @@ func main () {
   while (game.checkWin() == nil) {
     game.printBoard()
 
-    var isValidMove = false
+    var isValidMove: Bool = false
     while !isValidMove {
         print("It's \(game.player)'s turn. Enter a column number (0-6): ")
-        let userInput = readLine()
+        let userInput: String? = readLine()
         if let input = userInput, let column = Int(input) {
             isValidMove = game.makeMoves(column: column)
         } else {

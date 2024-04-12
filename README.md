@@ -27,9 +27,15 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+Welcome to my Swift Learning Journey! Join me on this journey to understand Swift comprehensively. This project represents my commitment to mastering the Swift programming language through a structured learning path, from foundational exercises to a full-fledged project.
 
 ![Connect4](./resources/Connect4.png)
 
+ 
+The journey began with foundational exercises to familiarise myself with Swift syntax, data types, control flow structures, and essential programming concepts.
+
+These exercises served as building blocks, laying a solid groundwork for my journey towards proficiency in Swift. As a final touch to this
+learning journey, I undertook the challenge of creating a classic game, Connect 4, in Swift. The project consolidated my understanding of the language and provided a practical application of Swift's features and principles in a larger-scale project. Developing Connect 4 in Swift was an enriching experience that allowed me to put my newfound knowledge into practice.
 
 ### Built With
 
@@ -40,13 +46,6 @@ The development environment for this project is powered by Xcode, an integrated 
 * [![Swift](https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white)](https://developer.apple.com/documentation/swift)
 * [![Xcode](https://img.shields.io/badge/Xcode-147EFB?style=for-the-badge&logo=xcode&logoColor=white)](https://developer.apple.com/xcode/)
 
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-This section provides instructions on setting up the project locally. Follow the steps below to get a local copy up and running.
-
-### Installation
 
 <!-- ROADMAP -->
 ## Project Roadmap
